@@ -1,0 +1,59 @@
+{
+  "packages": [
+    "npm:pi-subagents@0.35.1",
+    "npm:@narumitw/pi-goal",
+    "npm:@ayulab/pi-rewind",
+    "npm:pi-observational-memory@3.0.3",
+    "npm:@narumitw/pi-lsp",
+    "npm:pi-readseek",
+    "npm:pi-shazam",
+    "npm:pi-rtk-optimizer@0.7.1",
+    "npm:@ogulcancelik/pi-minimal-footer@0.1.8",
+    "npm:pi-ask-user@0.10.0"
+  ],
+  "showCacheMissNotices": true,
+  "quietStartup": true,
+  "compaction": { "enabled": true, "keepRecentTokens": 30000 },
+  "observational-memory": { "observeAfterTokens": 5000, "reflectAfterTokens": 40000, "compactAfterTokens": 110000 },
+  "subagents": {
+    "agentOverrides": {
+      "scout": {
+        "model": "anthropic/claude-haiku-4-5",
+        "thinking": "low",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-luna"
+        ]
+      },
+      "worker": {
+        "model": "anthropic/claude-sonnet-5",
+        "thinking": "high",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-terra",
+          "anthropic/claude-opus-4-8"
+        ]
+      },
+      "planner": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "high",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-sol"
+        ]
+      },
+      "reviewer": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "high",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-sol",
+          "anthropic/claude-sonnet-5"
+        ]
+      },
+      "oracle": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "xhigh",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-sol"
+        ]
+      }
+    }
+  }
+}

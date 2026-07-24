@@ -81,6 +81,13 @@ brew install --cask font-jetbrains-mono-nerd-font
 - See `.config/nvim/CHEATSHEET.md` for the full keymap reference
 - First launch after `install.sh` will auto-install plugins via Lazy — expect a delay on first open
 
+## pi coding agent (`pi/`)
+
+Config for the [pi coding agent](https://pi.dev) harness: luna/terra/sol tiered subagents (`pi/agents/`), personal-machine settings (`pi/settings-personal.json`), and the locked-down work-machine settings (`pi/settings-work.json`, no Telegram/MCP/web-access/image-gen). Not wired into `install.sh`; copy into place per machine.
+
+- Work computer: follow `pi/WORK-SETUP.md`. It is written as a runbook an LLM agent can execute directly.
+- The `pi-work` alias in `.zshrc` points pi at the locked-down root (`~/.pi/agent-work`).
+
 ## Machine-specific / personal config
 
 Not tracked here on purpose — create these yourself on each machine:

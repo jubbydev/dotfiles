@@ -1,0 +1,108 @@
+{
+  "lastChangelogVersion": "0.74.0",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "xhigh",
+  "packages": [
+    "npm:pi-codex-image-gen",
+    "npm:@llblab/pi-telegram",
+    "npm:pi-subagents@0.35.1",
+    "npm:pi-ask-user@0.10.0",
+    "npm:pi-intercom@0.6.0",
+    "npm:pi-prompt-template-model@0.9.3",
+    "npm:pi-chrome-dev-tools@0.1.0",
+    "npm:@fink-andreas/pi-linear-tools@0.7.0",
+    "npm:pi-observational-memory@3.0.3",
+    "npm:@ff-labs/pi-fff@0.7.2",
+    "npm:pi-rtk-optimizer@0.7.1",
+    "npm:@juicesharp/rpiv-todo@1.3.0",
+    "npm:pi-mcp-adapter@2.12.0",
+    "npm:@ayulab/pi-rewind",
+    "npm:pi-btw@0.4.0",
+    "npm:pi-web-access@0.10.7",
+    "npm:@ogulcancelik/pi-minimal-footer@0.1.8",
+    "npm:@guwidoe/pi-clipboard-image@0.2.0",
+    "npm:@ifi/pi-plan",
+    "npm:@narumitw/pi-goal",
+    "npm:@narumitw/pi-lsp",
+    "npm:pi-readseek",
+    "npm:pi-shazam",
+    "npm:pi-agent-budget"
+  ],
+  "showHardwareCursor": false,
+  "showCacheMissNotices": true,
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "collapseChangelog": true,
+  "quietStartup": true,
+  "hideThinkingBlock": false,
+  "treeFilterMode": "default",
+  "transport": "auto",
+  "enabledModels": [
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini",
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.6-luna",
+    "anthropic/claude-sonnet-5",
+    "anthropic/claude-opus-4-8",
+    "anthropic/claude-haiku-4-5"
+  ],
+  "enableSkillCommands": true,
+  "subagents": {
+    "agentOverrides": {
+      "scout": {
+        "model": "anthropic/claude-haiku-4-5",
+        "thinking": "low",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-luna"
+        ]
+      },
+      "worker": {
+        "model": "anthropic/claude-sonnet-5",
+        "thinking": "high",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-terra",
+          "anthropic/claude-opus-4-8"
+        ]
+      },
+      "planner": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "high",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-sol"
+        ]
+      },
+      "reviewer": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "high",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-sol",
+          "anthropic/claude-sonnet-5"
+        ]
+      },
+      "oracle": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "xhigh",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-sol"
+        ]
+      }
+    }
+  },
+  "observational-memory": {
+    "observeAfterTokens": 5000,
+    "reflectAfterTokens": 40000,
+    "compactAfterTokens": 110000,
+    "model": {
+      "provider": "openai-codex",
+      "id": "gpt-5.4-mini"
+    }
+  },
+  "compaction": {
+    "enabled": true,
+    "keepRecentTokens": 30000
+  }
+}

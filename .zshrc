@@ -84,3 +84,7 @@ eval "$(direnv hook zsh)"
 
 # machine-specific secrets/env vars, not tracked in dotfiles repo
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# --- pi coding agent: locked-down work root alias (added 2026-07-24) ---
+alias pi-work='PI_CODING_AGENT_DIR="$HOME/.pi/agent-work" pi'
+# --- end pi coding agent work root alias ---
