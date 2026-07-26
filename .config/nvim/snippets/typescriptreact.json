@@ -1,4 +1,19 @@
 {
+  "Tagalingo component": {
+    "prefix": "tgc",
+    "body": [
+      "type ${1:Component}Props = {",
+      "\t${2:prop}: ${3:string}",
+      "}",
+      "",
+      "export function ${1:Component}({ ${2:prop} }: ${1:Component}Props) {",
+      "\treturn (",
+      "\t\t<div>$0</div>",
+      "\t)",
+      "}"
+    ],
+    "description": "Tagalingo component: named export, typed props, no React import, no default export"
+  },
   "Prism React FC component": {
     "prefix": "pcomp",
     "body": [
