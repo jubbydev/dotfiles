@@ -1,0 +1,12 @@
+id = "worktree-cleanup"
+name = "Worktree Cleanup"
+version = "0.1.0"
+min_herdr_version = "0.7.5"
+description = "Remove a worktree workspace, recovering the orphaned-checkout state that herdr's built-in removal gets permanently stuck on."
+platforms = ["macos", "linux"]
+
+[[actions]]
+id = "remove"
+title = "Remove worktree (with orphan recovery)"
+contexts = ["workspace"]
+command = ["python3", "bin/remove.py"]

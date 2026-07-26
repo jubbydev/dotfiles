@@ -75,6 +75,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 - `prefix+u` / `prefix+i` — open the focused branch's GitHub PR in a browser / force a PR-status refresh
 - Each workspace's sidebar row shows its branch's PR as `#1127 ✓` — `✓` checks pass, `✗` fail or cancelled, `●` still running, `◆` merged, `⊘` closed, `⟳` recomputing, nothing at all means no PR. Provided by `wyattjoh/herdr-plugin-gh-pr`
 - `plugins-local/pr-mirror` is a local plugin of mine: gh-pr labels *panes*, but the spaces sidebar only renders *workspace* tokens, so it copies one onto the other. Without it `$pr` in `[ui.sidebar.spaces]` never resolves
+- `prefix+shift+k` — remove the focused worktree workspace, via `plugins-local/worktree-cleanup`. herdr's built-in removal shells out to `git worktree remove`; gitignored artifacts (`.vite`, `.wt-supabase`) keep the directory alive after git deregisters it, and every retry then fails with "is not a working tree", stranding the workspace in the sidebar permanently. This tries the normal path first and only takes over on that error. It refuses if the path is outside `~/.herdr/worktrees`, if git still knows the worktree, or if anything other than a dotfile or `node_modules`/`dist`/`build`/`coverage` survived
 - Quick actions (via herdr-plus) for the Tagalingo repo: delete current worktree, open the branch's Linear ticket, open the branch's GitHub PR
 - `tdi/herdr-worktree-setup` runs `./worktree_setup.sh` automatically whenever a new worktree is created for `~/Coding_Projects/tagalog-learning-app`
 

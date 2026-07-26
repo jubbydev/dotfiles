@@ -41,6 +41,7 @@ if [ -d "$DOTFILES/.config/herdr" ]; then
 	echo "  herdr plugin install cloudmanic/herdr-plus"
 	echo "  herdr plugin install wyattjoh/herdr-plugin-gh-pr   # needs herdr >= 0.7.4, bun, gh"
 	echo "  herdr plugin link ~/.config/herdr/plugins/local/pr-mirror"
+	echo "  herdr plugin link ~/.config/herdr/plugins/local/worktree-cleanup"
 	echo "  brew install glow git-delta bat   # renderers used by the built-in file viewer"
 	echo "  brew install oven-sh/bun/bun      # gh-pr runs on bun"
 	echo ""
