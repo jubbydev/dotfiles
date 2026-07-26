@@ -29,6 +29,9 @@ local p = {
 
   border = "#181A1F",
   comment = "#697098",
+  -- Desaturated teal for editor-generated text (inlay hints). Not from the
+  -- upstream VS Code theme; picked for hue separation from code + keywords.
+  hint = "#7FA8A3",
 
   red = "#E15A60",
   pink = "#ff5874",
@@ -111,6 +114,32 @@ hl("DiagnosticUnderlineError", { sp = p.red, underline = true })
 hl("DiagnosticUnderlineWarn", { sp = p.yellow_bright, underline = true })
 hl("DiagnosticUnderlineInfo", { sp = p.blue_dim, underline = true })
 hl("DiagnosticUnderlineHint", { sp = p.teal, underline = true })
+
+-- Inlay hints (parameter names, inferred types). Neovim defaults these to
+-- NonText, which is #3B4048 on a #282C35 background — 1.34:1, unreadable.
+-- p.hint gives 5.35:1; italic keeps them distinct from real code.
+hl("LspInlayHint", { fg = p.hint, italic = true })
+
+-- Snacks picker. A dozen of its groups default-link to NonText (#3B4048),
+-- which is 1.48:1 on the #21252B float background — file paths were
+-- effectively invisible. Raising NonText itself is wrong (it also draws
+-- end-of-buffer markers and listchars), so set the picker groups directly.
+-- fg_statusline = 6.2:1, fg_sidebar = 3.1:1 for genuinely de-emphasised rows.
+for _, g in ipairs({
+  "SnacksPickerDir",
+  "SnacksPickerPathHidden",
+  "SnacksPickerPathIgnored",
+  "SnacksPickerUnselected",
+  "SnacksPickerTotals",
+  "SnacksPickerBufFlags",
+  "SnacksPickerKeymapRhs",
+  "SnacksPickerGitStatusIgnored",
+  "SnacksPickerGitStatusUntracked",
+}) do
+  hl(g, { fg = p.fg_statusline })
+end
+hl("SnacksPickerTree", { fg = p.fg_sidebar })
+hl("SnacksPickerCol", { fg = p.fg_sidebar })
 
 -- Diff / git
 hl("DiffAdd", { bg = "#1d3b2c" })
