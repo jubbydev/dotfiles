@@ -1,0 +1,30 @@
+id = "pr-mirror"
+name = "PR Status Mirror"
+version = "0.1.0"
+min_herdr_version = "0.7.5"
+description = "Mirrors gh-pr's pane-level $pr token onto its workspace so the spaces sidebar can render it."
+platforms = ["macos", "linux"]
+
+# gh-pr writes pane tokens. The spaces sidebar list reads workspace tokens.
+# These hooks copy one to the other. They fire on the same events gh-pr uses,
+# so the mirror lands right after gh-pr recomputes.
+
+[[events]]
+on = "pane.focused"
+command = ["python3", "bin/mirror.py"]
+
+[[events]]
+on = "worktree.opened"
+command = ["python3", "bin/mirror.py"]
+
+[[events]]
+on = "worktree.created"
+command = ["python3", "bin/mirror.py"]
+
+# Forces gh-pr to recompute the focused pane, then mirrors. Bind this instead of
+# gh-pr.refresh so one key does both.
+[[actions]]
+id = "refresh"
+title = "Refresh + mirror PR status"
+contexts = ["workspace"]
+command = ["python3", "bin/mirror.py", "--refresh"]
