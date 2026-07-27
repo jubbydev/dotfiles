@@ -23,6 +23,10 @@ return {
       settings = {
         -- inline type hints + source-organize-imports preferences
         tsserver_file_preferences = {
+          -- Auto-import via the tsconfig `paths` alias (@/foo) instead of a
+          -- relative path. The default, "shortest", picks ../foo whenever that
+          -- string is shorter than the alias.
+          importModuleSpecifierPreference = "non-relative",
           includeInlayParameterNameHints = "all",
           includeInlayParameterNameHintsWhenArgumentMatchesName = false,
           includeInlayFunctionLikeReturnTypeHints = true,
