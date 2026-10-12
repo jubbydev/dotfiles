@@ -1,0 +1,24 @@
+{
+  "theme": "System",
+  "theme_dark": "anthracite",
+  "theme_light": "light",
+  "copy_on_select": true,
+  "cursor": {
+    "programs": true
+  },
+  "font_size": 14,
+  "agent_command": "PI_OMP_NATIVE=1 omp",
+  "opacity": 65,
+  "blur": 48,
+  "surface_headings": "Sized",
+  "composer_text": "Markdown",
+  "git": {
+    "external_editor": "nvim",
+    "ai_model": "@smol"
+  },
+  "keybinds": {
+    "alt+shift+z": [
+      "plugin.worktree.open_worktrees"
+    ]
+  }
+}

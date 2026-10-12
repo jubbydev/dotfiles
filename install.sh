@@ -30,6 +30,25 @@ if [ -d "$DOTFILES/.config/herdr" ]; then
 	cp -rv "$DOTFILES/.config/herdr/plugins-local/." ~/.config/herdr/plugins/local/
 fi
 
+# Tern — settings copied, not symlinked, since Tern rewrites settings.json itself.
+# Plugins live in ~/Library/Application Support/Tern/plugins; vimnav is vendored here (no upstream).
+if [ -d "$DOTFILES/.config/tern" ]; then
+	TERN_DIR="$HOME/Library/Application Support/Tern"
+	mkdir -p "$TERN_DIR"
+	cp -v "$DOTFILES/.config/tern/settings.json" "$TERN_DIR/settings.json"
+	if command -v tern >/dev/null 2>&1; then
+		tern plugin install "$DOTFILES/.config/tern/plugins/vimnav" --force || echo "tern: vimnav install failed (is Tern running?)"
+	fi
+fi
+
+# neotern — built from the fork's snacks-picker branch (branch tip at install time; re-run to update).
+# Needs a Rust toolchain: brew install rustup && rustup default stable
+if command -v cargo >/dev/null 2>&1; then
+	cargo install --git https://github.com/jdeocampo99/neotern --branch snacks-picker --root ~/.local --force neotern
+else
+	echo "neotern: cargo not found; install Rust, then re-run to build neotern from jdeocampo99/neotern@snacks-picker"
+fi
+
 echo ""
 echo "Symlinked. Now install the packages this config expects:"
 echo "  brew install antidote starship fzf atuin git-delta btop fastfetch eza zoxide ripgrep fd bat lazygit tmux"
@@ -47,3 +66,10 @@ if [ -d "$DOTFILES/.config/herdr" ]; then
 	echo ""
 fi
 echo "If you need machine-specific secrets/env vars, put them in ~/.zshrc.local (gitignored, sourced automatically if present)."
+if [ -d "$DOTFILES/.config/tern" ]; then
+	echo "tern: install the remaining plugins (keybind alt+shift+z needs worktree):"
+	echo "  tern plugin install github.com/nibblebot/tern-worktree"
+	echo "  tern plugin install github.com/jubbydev/tern-pr-guide"
+	echo "  git clone https://github.com/jdeocampo99/tandem.git ~/Coding_Projects/tandem && tern plugin link ~/Coding_Projects/tandem/tern-plugin"
+	echo ""
+fi
