@@ -1,6 +1,6 @@
 [core]
 	pager = delta
-	fsmonitor = true
+	fsmonitor = false
 	untrackedCache = true
 [alias]
   # ── Cheatsheet ───────────────────────────────────────────────────────────────
@@ -69,6 +69,7 @@
   root      = rev-parse --show-toplevel
   ignored   = ls-files --others --ignored --exclude-standard
   contributors = shortlog -sn
+	fresh = "!f() { git reset --hard && git clean -fd && git fetch origin main && git switch -c \"${1:?branch name required}\" origin/main; }; f"
 [credential "https://github.com"]
 	helper =
 	helper = !gh auth git-credential

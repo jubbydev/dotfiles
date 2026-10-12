@@ -75,6 +75,7 @@ alias dockstop='docker stop $(docker ps -q)'
 # Apple Silicon Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.deno/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 # starship prompt
 eval "$(starship init zsh)"
@@ -88,3 +89,6 @@ eval "$(direnv hook zsh)"
 # --- pi coding agent: locked-down work root alias (added 2026-07-24) ---
 alias pi-work='PI_CODING_AGENT_DIR="$HOME/.pi/agent-work" pi'
 # --- end pi coding agent work root alias ---
+
+# Tern native omp UI
+alias omp="PI_OMP_NATIVE=1 omp"
